@@ -82,7 +82,7 @@ export const Login_User = async (req:Request,res:Response) =>
              }
              else
              {
-                 let token_encode = await  jwt.sign(data_1[0].user_id,jwt_key)
+                 let token_encode = jwt.sign(data_1[0].user_id,jwt_key)
                  res.cookie(process.env.COOKIEKEY as string,token_encode,{httpOnly:true})
                  res.status(200).send({msg:'Login SuccessFully..'})
              }
@@ -122,4 +122,3 @@ export const Get_All = (req:Request,res:Response) =>
         res.status(500).send({msg:'Internal Server Error...'})
     }
 }
-
